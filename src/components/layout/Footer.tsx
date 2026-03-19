@@ -144,7 +144,12 @@ function ViverDePJModal({ onClose }: { onClose: () => void }) {
               <ul className="space-y-3">
                 <li className="flex items-center gap-3 text-sm text-dark-400">
                   <Phone size={14} className="text-dark-500 shrink-0" />
-                  <a href="tel:+551197103-9181" className="hover:text-white transition-colors">(11) 97103-9181</a>
+                  <a
+                    href="https://wa.me/5511971039181?text=Oi%20Sofia%2C%20tudo%20bem%3F%20Vim%20pelo%20site%20da%20IMPGEO%20e%20fiquei%20interessado%20pelo%20trabalho%20da%20Viver%20de%20PJ%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >(11) 97103-9181</a>
                 </li>
                 <li className="flex items-center gap-3 text-sm text-dark-400">
                   <Mail size={14} className="text-dark-500 shrink-0" />
