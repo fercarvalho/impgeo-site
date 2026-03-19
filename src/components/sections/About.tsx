@@ -158,6 +158,78 @@ export default function About() {
           </motion.div>
         </div>
 
+        {/* Partners / Founders */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-20"
+        >
+          <div className="text-center mb-10">
+            <SectionBadge>Sócios fundadores</SectionBadge>
+            <h2 className="section-title mt-4">
+              As pessoas por trás da <span className="gradient-text">IMP Geotecnologias</span>
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {[
+              {
+                name: 'Vinicius Iria',
+                role: 'Geógrafo | Sócio fundador',
+                bio: 'Geógrafo e Mestre em Geografia pela Universidade Estadual de Londrina (UEL). Certificado em pilotagem e mapeamento com RPA e com MBA em Gestão Ambiental. Com vasta experiência em geotecnologias e projetos ambientais, lidera a equipe com foco em inovação e precisão.',
+                crea: 'CREA/PR: 195641/D',
+                email: 'vinicius@impgeo.com.br',
+                photo: '/images/vinicius.webp',
+              },
+              {
+                name: 'Eduardo Molina',
+                role: 'Geógrafo | Sócio fundador',
+                bio: 'Mestre em Planejamento Urbano e Territorial pela UEL, com grande experiência em Sistemas de Informações Geográficas (SIG) e Geoprocessamento. Traz expertise em aerofotogrametria e geotecnologias avançadas para garantir o sucesso de cada projeto.',
+                crea: 'CREA/PR: 162531D',
+                email: 'eduardo@impgeo.com.br',
+                photo: '/images/eduardo.webp',
+              },
+            ].map((person, i) => (
+              <motion.div
+                key={person.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                className="glass rounded-3xl p-8 flex flex-col items-center text-center"
+              >
+                <div className="w-32 h-32 rounded-full overflow-hidden mb-5 ring-4 ring-primary-500/20">
+                  <img
+                    src={person.photo}
+                    alt={person.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="text-xl font-bold font-display text-dark-900 dark:text-white mb-1">
+                  {person.name}
+                </h3>
+                <p className="text-sm text-primary-500 font-medium mb-4">{person.role}</p>
+                <p className="text-sm text-dark-600 dark:text-dark-300 leading-relaxed mb-5">
+                  {person.bio}
+                </p>
+                <div className="text-xs text-dark-500 dark:text-dark-400 space-y-1 w-full border-t border-dark-200 dark:border-dark-700 pt-4">
+                  <p>{person.crea}</p>
+                  <p>
+                    <a
+                      href={`mailto:${person.email}`}
+                      className="text-primary-500 hover:text-primary-400 transition-colors"
+                    >
+                      {person.email}
+                    </a>
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Pillars */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {pillars.map((pillar, i) => (
