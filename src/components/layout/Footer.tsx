@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MapPin, Phone, Mail, Instagram, Linkedin, ArrowUpRight, X, ExternalLink } from 'lucide-react'
+import { MapPin, Phone, Mail, Instagram, Linkedin, ArrowUpRight, X, ExternalLink, Globe, ArrowRight } from 'lucide-react'
 
 const services = [
   { label: 'Georreferenciamento Urbano',  serviceTitle: 'Georreferenciamento' },
@@ -98,8 +98,102 @@ function MapModal({ onClose }: { onClose: () => void }) {
   )
 }
 
+function ViverDePJModal({ onClose }: { onClose: () => void }) {
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <motion.div
+          className="absolute inset-0 bg-dark-950/80 backdrop-blur-sm"
+          onClick={onClose}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        />
+        <motion.div
+          className="relative w-full max-w-2xl rounded-2xl overflow-hidden bg-dark-900 border border-dark-700/60 shadow-2xl"
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          transition={{ duration: 0.25 }}
+        >
+          <div className="flex items-center justify-between px-6 py-4 border-b border-dark-700/60">
+            <div className="flex items-center gap-3">
+              <img src="/viver-de-pj-logo.png" alt="Viver de PJ" className="h-8 object-contain" />
+              <div>
+                <p className="text-sm font-semibold text-white">Viver de PJ</p>
+                <p className="text-xs text-dark-400">Ecossistema de Empreendedorismo</p>
+              </div>
+            </div>
+            <button
+              onClick={onClose}
+              className="w-8 h-8 rounded-lg bg-dark-800 hover:bg-dark-700 flex items-center justify-center text-dark-400 hover:text-white transition-colors duration-200"
+            >
+              <X size={15} />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-6 py-6">
+            {/* Contato */}
+            <div>
+              <h3 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">Contato</h3>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3 text-sm text-dark-400">
+                  <Phone size={14} className="text-dark-500 shrink-0" />
+                  <a href="tel:+551197103-9181" className="hover:text-white transition-colors">(11) 97103-9181</a>
+                </li>
+                <li className="flex items-center gap-3 text-sm text-dark-400">
+                  <Mail size={14} className="text-dark-500 shrink-0" />
+                  <a href="mailto:vem@viverdepj.com.br" className="hover:text-white transition-colors">vem@viverdepj.com.br</a>
+                </li>
+                <li className="flex items-center gap-3 text-sm text-dark-400">
+                  <Globe size={14} className="text-dark-500 shrink-0" />
+                  <a href="https://viverdepj.com.br" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">viverdepj.com.br</a>
+                </li>
+                <li className="flex items-center gap-3 text-sm text-dark-400">
+                  <MapPin size={14} className="text-dark-500 shrink-0" />
+                  <span>Brasil</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Serviços */}
+            <div>
+              <h3 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">Serviços</h3>
+              <ul className="space-y-2">
+                {[
+                  'Consultoria Estratégica de Negócios',
+                  'Sistema de Gestão',
+                  'Sistema Financeiro',
+                  'CRM',
+                  'IA Financeira',
+                  'IA de Atendimento',
+                  'IA para Negócios',
+                  'Benefícios Corporativos',
+                  'Contabilidade para Empresas',
+                  'BPO Financeiro',
+                ].map(s => (
+                  <li key={s} className="flex items-center gap-2 text-sm text-dark-400">
+                    <span className="w-1 h-1 rounded-full bg-primary-600 shrink-0" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  )
+}
+
 export default function Footer() {
   const [mapOpen, setMapOpen] = useState(false)
+  const [viverOpen, setViverOpen] = useState(false)
   const currentYear = new Date().getFullYear()
 
   const handleNav = (href: string) => {
@@ -131,11 +225,11 @@ export default function Footer() {
             {/* Brand */}
             <div className="lg:col-span-1">
               <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-600 to-teal-500 flex items-center justify-center">
-                  <MapPin size={18} className="text-white" />
+                <div className="w-9 h-9 shrink-0 overflow-hidden flex items-center justify-center">
+                  <img src="/logo_impgeo.png" alt="IMPGEO" className="w-9 h-9 object-contain" />
                 </div>
                 <div className="flex flex-col leading-tight">
-                  <span className="text-base font-bold font-display text-white">IMP</span>
+                  <span className="text-base font-bold font-display text-white">IMPGEO</span>
                   <span className="text-[10px] font-medium text-dark-500 tracking-widest uppercase">Geotecnologias</span>
                 </div>
               </div>
@@ -161,6 +255,29 @@ export default function Footer() {
                 >
                   <Linkedin size={16} />
                 </a>
+              </div>
+
+              {/* Viver de PJ block */}
+              <div className="mt-6 pt-5 border-t border-dark-800">
+                <div className="flex items-center gap-2.5 mb-2">
+                  <img src="/viver-de-pj-logo.png" alt="Viver de PJ" className="h-7 object-contain" />
+                  <div className="flex flex-col leading-tight">
+                    <span className="text-sm font-semibold text-white">Viver de PJ</span>
+                    <span className="text-[10px] text-dark-500">Ecossistema de Empreendedorismo</span>
+                  </div>
+                </div>
+                <p className="text-xs text-dark-500 leading-relaxed mb-1">
+                  A Viver de PJ é um ecossistema completo de gestão e educação para Empreendedores.
+                </p>
+                <p className="text-xs text-dark-600 mb-3">
+                  Autor: 41.748.511 Fernando Carvalho Gomes dos Santos
+                </p>
+                <button
+                  onClick={() => setViverOpen(true)}
+                  className="inline-flex items-center gap-1 text-xs font-medium text-primary-400 hover:text-primary-300 transition-colors duration-200"
+                >
+                  Para mais informações sobre a Viver de PJ clique aqui <ArrowRight size={11} />
+                </button>
               </div>
             </div>
 
@@ -253,19 +370,20 @@ export default function Footer() {
               © {currentYear} IMP Geotecnologias Aplicadas. Todos os direitos reservados.
             </p>
             <motion.a
-              href="https://impgeo.com.br"
+              href="https://viverdepj.com.br"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-dark-600 hover:text-primary-400 flex items-center gap-1 transition-colors duration-200"
               whileHover={{ x: 2 }}
             >
-              impgeo.com.br <ArrowUpRight size={12} />
+              viverdepj.com.br <ArrowUpRight size={12} />
             </motion.a>
           </div>
         </div>
       </footer>
 
       {mapOpen && <MapModal onClose={() => setMapOpen(false)} />}
+      {viverOpen && <ViverDePJModal onClose={() => setViverOpen(false)} />}
     </>
   )
 }
