@@ -68,8 +68,8 @@ export default function Header() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="w-11 h-11 rounded-xl overflow-hidden shadow-glow-blue group-hover:shadow-glow-teal transition-shadow duration-300 shrink-0">
-            <img src="/logo.png" alt="IMPGEO" className="w-full h-full object-cover" />
+          <div className="w-9 h-9 shrink-0 flex items-center justify-center">
+            <img src="/logo_impgeo.png" alt="IMPGEO" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col leading-tight">
             <span className="text-base font-bold font-display text-dark-900 dark:text-white tracking-tight">IMPGEO</span>
