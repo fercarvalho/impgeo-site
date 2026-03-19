@@ -134,10 +134,10 @@ export default function About() {
 
               {/* Badge on image */}
               <div className="absolute bottom-5 left-5 right-5">
-                <div className="glass-dark rounded-2xl px-5 py-4 flex items-center justify-between">
+                <div className="rounded-2xl px-5 py-4 flex items-center justify-between bg-white/60 dark:bg-dark-900/80 backdrop-blur-md border border-white/80 dark:border-dark-700/50 shadow-lg">
                   <div>
-                    <p className="text-xs text-dark-400">Empresa certificada</p>
-                    <p className="text-sm font-semibold text-white">IMP Geotecnologias Aplicadas</p>
+                    <p className="text-xs text-dark-500 dark:text-dark-400">Empresa certificada</p>
+                    <p className="text-sm font-semibold text-dark-900 dark:text-white">IMP Geotecnologias Aplicadas</p>
                   </div>
                   <div className="w-10 h-10 rounded-xl bg-primary-600/20 border border-primary-500/30 flex items-center justify-center">
                     <Shield size={18} className="text-primary-400" />
