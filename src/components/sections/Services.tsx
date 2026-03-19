@@ -618,6 +618,10 @@ function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps) {
   }, [onClose])
 
   const paragraphs = service.longDescription.split('\n\n')
+  const waMsg = encodeURIComponent(
+    `Olá, pessoal da IMPGEO, vim através do site de vocês, e gostaria de saber mais informações sobre o serviço de ${service.title} que vocês realizam`
+  )
+  const waLink = `https://wa.me/5543991862770?text=${waMsg}`
 
   return (
     <AnimatePresence>
@@ -686,7 +690,7 @@ function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps) {
               {/* CTA */}
               <div className="pt-2 border-t border-dark-100 dark:border-dark-700">
                 <a
-                  href="https://wa.me/5543991862770?text=Ol%C3%A1%2C%20pessoal%20da%20IMPGEO%2C%20vim%20atrav%C3%A9s%20do%20site%20de%20voc%C3%AAs%2C%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os%20prestados%20por%20voc%C3%AAs."
+                  href={waLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:gap-2.5 transition-all duration-200"
