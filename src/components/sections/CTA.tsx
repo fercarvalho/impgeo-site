@@ -59,7 +59,7 @@ export default function CTA() {
           transition={{ delay: 0.3 }}
         >
           <a
-            href="https://wa.me/5543991862770"
+            href="https://wa.me/5543991862770?text=Ol%C3%A1%2C%20pessoal%20da%20IMPGEO%2C%20vim%20atrav%C3%A9s%20do%20site%20de%20voc%C3%AAs%2C%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os%20prestados%20por%20voc%C3%AAs."
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary text-base px-8 py-4 rounded-2xl"

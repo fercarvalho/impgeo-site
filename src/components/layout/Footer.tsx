@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { MapPin, Phone, Mail, Instagram, Linkedin, ArrowUpRight, X, ExternalLink } from 'lucide-react'
 
 const services = [
-  'Georreferenciamento Urbano',
-  'Georreferenciamento Rural',
-  'Levantamento Topográfico',
-  'Mapeamento com Drone',
-  'Licenciamento Ambiental',
-  'Regularização Fundiária',
+  { label: 'Georreferenciamento Urbano',  serviceTitle: 'Georreferenciamento' },
+  { label: 'Georreferenciamento Rural',   serviceTitle: 'Georreferenciamento' },
+  { label: 'Levantamento Topográfico',    serviceTitle: 'Levantamento Topográfico' },
+  { label: 'Mapeamento com Drone',        serviceTitle: 'Mapeamento com Drone' },
+  { label: 'Licenciamento Ambiental',     serviceTitle: 'Licenciamento Ambiental' },
+  { label: 'Regularização Fundiária',     serviceTitle: 'Regularização Fundiária' },
 ]
 
 const links = [
@@ -107,6 +107,14 @@ export default function Footer() {
     el?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const openServiceModal = (serviceTitle: string) => {
+    document.querySelector('#servicos')?.scrollIntoView({ behavior: 'smooth' })
+    // Small delay so the section is in view before the modal opens
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('open-service-modal', { detail: serviceTitle }))
+    }, 400)
+  }
+
   return (
     <>
       <footer className="relative bg-dark-950 text-dark-300 overflow-hidden">
@@ -161,15 +169,14 @@ export default function Footer() {
               <h3 className="text-sm font-semibold text-white uppercase tracking-widest mb-4">Serviços</h3>
               <ul className="space-y-2.5">
                 {services.map(s => (
-                  <li key={s}>
-                    <a
-                      href="#servicos"
-                      onClick={e => { e.preventDefault(); handleNav('#servicos') }}
-                      className="text-sm text-dark-400 hover:text-primary-400 transition-colors duration-200 flex items-center gap-1.5 group"
+                  <li key={s.label}>
+                    <button
+                      onClick={() => openServiceModal(s.serviceTitle)}
+                      className="text-sm text-dark-400 hover:text-primary-400 transition-colors duration-200 flex items-center gap-1.5 group text-left"
                     >
-                      <span className="w-1 h-1 rounded-full bg-primary-600 group-hover:bg-primary-400 transition-colors" />
-                      {s}
-                    </a>
+                      <span className="w-1 h-1 rounded-full bg-primary-600 group-hover:bg-primary-400 transition-colors shrink-0" />
+                      {s.label}
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -200,7 +207,9 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li>
                   <a
-                    href="tel:+5543991862770"
+                    href="https://wa.me/5543991862770?text=Ol%C3%A1%2C%20pessoal%20da%20IMPGEO%2C%20vim%20atrav%C3%A9s%20do%20site%20de%20voc%C3%AAs%2C%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os%20prestados%20por%20voc%C3%AAs."
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-3 text-sm text-dark-400 hover:text-white transition-colors duration-200 group"
                   >
                     <span className="w-8 h-8 rounded-lg bg-dark-800 group-hover:bg-primary-600/20 flex items-center justify-center transition-colors">
