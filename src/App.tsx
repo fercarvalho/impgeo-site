@@ -36,6 +36,22 @@ export default function App() {
         <CTA />
       </main>
       <Footer />
+
+      {/* WhatsApp floating button */}
+      <a
+        href={`https://wa.me/5543991862770?text=${encodeURIComponent('Olá, pessoal da IMPGEO, vim através do site de vocês, e gostaria de saber mais informações sobre os serviços prestados por vocês.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar no WhatsApp"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-2xl bg-[#25D366] hover:bg-[#1ebe5d] shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-200 flex items-center justify-center"
+      >
+        <img src="/whatsapp-icon.svg" alt="WhatsApp" className="w-7 h-7" />
+        {/* Notification dot */}
+        <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+          <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-red-500" />
+        </span>
+      </a>
     </div>
   )
 }
