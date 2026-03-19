@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import {
   Crosshair, Mountain, Plane, Camera, TreePine, FileCheck,
-  Home, Briefcase, ArrowRight
+  Home, Briefcase, MoreHorizontal, ArrowRight, X
 } from 'lucide-react'
 import { useInView } from '@/hooks/useInView'
 import SectionBadge from '@/components/ui/SectionBadge'
@@ -91,8 +92,72 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 }
 
+function OutrosModal({ onClose }: { onClose: () => void }) {
+  const overlayRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', handleKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', handleKey)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        ref={overlayRef}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-dark-950/70 backdrop-blur-sm"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={(e) => { if (e.target === overlayRef.current) onClose() }}
+      >
+        <motion.div
+          className="relative w-full max-w-md bg-white dark:bg-dark-800 rounded-3xl p-8 shadow-2xl"
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          transition={{ duration: 0.25 }}
+        >
+          <button
+            onClick={onClose}
+            className="absolute top-5 right-5 w-8 h-8 rounded-full flex items-center justify-center bg-dark-100 dark:bg-dark-700 text-dark-500 dark:text-dark-400 hover:bg-dark-200 dark:hover:bg-dark-600 transition-colors"
+          >
+            <X size={15} />
+          </button>
+
+          <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 bg-primary-500/15 text-primary-500">
+            <MoreHorizontal size={22} />
+          </div>
+          <h3 className="text-xl font-bold font-display text-dark-900 dark:text-white mb-2">
+            Outros Serviços
+          </h3>
+          <p className="text-sm text-dark-500 dark:text-dark-400 leading-relaxed">
+            Em breve disponibilizaremos mais serviços aqui. Entre em contato para saber mais sobre nossas soluções personalizadas.
+          </p>
+
+          <div className="mt-6 pt-6 border-t border-dark-100 dark:border-dark-700">
+            <a
+              href="https://wa.me/5543991862770"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:gap-2.5 transition-all duration-200"
+            >
+              Falar com a equipe <ArrowRight size={14} />
+            </a>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  )
+}
+
 export default function Services() {
   const { ref, inView } = useInView()
+  const [outrosOpen, setOutrosOpen] = useState(false)
 
   return (
     <section id="servicos" className="relative py-24 lg:py-32">
@@ -155,9 +220,7 @@ export default function Services() {
                           ${service.featured ? 'lg:col-span-2' : ''}
                           ${i === 3 ? 'lg:row-span-1' : ''}`}
             >
-              {/* Background gradient on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-
               <div className="relative z-10">
                 <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${service.iconBg}`}>
                   {service.icon}
@@ -186,8 +249,38 @@ export default function Services() {
               </div>
             </motion.div>
           ))}
+
+          {/* Outros card */}
+          <motion.div
+            variants={cardVariants}
+            onClick={() => setOutrosOpen(true)}
+            className="group relative rounded-2xl p-6 cursor-pointer overflow-hidden
+                        bg-white dark:bg-dark-800/50
+                        border border-dashed border-dark-200 dark:border-dark-600
+                        hover:border-primary-300 dark:hover:border-primary-700
+                        hover:shadow-xl hover:shadow-primary-500/5
+                        transition-all duration-300"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="relative z-10 flex flex-col items-start h-full">
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 bg-dark-100 dark:bg-dark-700 text-dark-500 dark:text-dark-400 group-hover:bg-primary-500/15 group-hover:text-primary-500 transition-colors duration-300">
+                <MoreHorizontal size={22} />
+              </div>
+              <h3 className="text-base font-semibold text-dark-900 dark:text-white mb-2 font-display">
+                Outros
+              </h3>
+              <p className="text-sm text-dark-500 dark:text-dark-400 leading-relaxed mb-4">
+                Mais serviços em breve. Clique para saber mais.
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-600 dark:text-primary-400 group-hover:gap-2.5 transition-all duration-200 mt-auto">
+                Ver mais <ArrowRight size={13} />
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
+
+      {outrosOpen && <OutrosModal onClose={() => setOutrosOpen(false)} />}
     </section>
   )
 }
