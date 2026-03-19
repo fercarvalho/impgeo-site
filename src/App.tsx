@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import { useTheme } from '@/hooks/useTheme'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -36,6 +37,7 @@ export default function App() {
         <CTA />
       </main>
       <Footer />
+      <Analytics />
     </div>
   )
 }
