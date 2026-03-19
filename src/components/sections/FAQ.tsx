@@ -85,7 +85,7 @@ export default function FAQ() {
               className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                 open === i
                   ? 'border-primary-300 dark:border-primary-700 bg-primary-50/50 dark:bg-primary-950/20 shadow-lg shadow-primary-500/5'
-                  : 'border-dark-100 dark:border-dark-700/50 bg-white dark:bg-dark-800/40 hover:border-dark-200 dark:hover:border-dark-600'
+                  : 'border-dark-200 dark:border-dark-700/50 bg-dark-100 dark:bg-dark-800/40 hover:border-dark-300 dark:hover:border-dark-600'
               }`}
             >
               <button

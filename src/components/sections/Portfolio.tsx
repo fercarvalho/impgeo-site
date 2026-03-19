@@ -146,7 +146,7 @@ export default function Portfolio() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.35 }}
-                className="group rounded-2xl overflow-hidden bg-white dark:bg-dark-800/50 border border-dark-100 dark:border-dark-700/50 hover:border-primary-300 dark:hover:border-primary-700 hover:shadow-xl transition-all duration-300"
+                className="group rounded-2xl overflow-hidden bg-dark-100 dark:bg-dark-800/50 border border-dark-200 dark:border-dark-700/50 hover:border-primary-300 dark:hover:border-primary-700 hover:shadow-xl transition-all duration-300"
               >
                 {/* Image */}
                 <div className="relative overflow-hidden aspect-video bg-dark-100 dark:bg-dark-700">

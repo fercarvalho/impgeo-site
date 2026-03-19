@@ -565,7 +565,7 @@ function FaqAccordion({ items }: { items: FaqItem[] }) {
   return (
     <div className="space-y-2">
       {items.map((item, i) => (
-        <div key={i} className="rounded-xl border border-dark-100 dark:border-dark-700/60 overflow-hidden">
+        <div key={i} className="rounded-xl border border-dark-200 dark:border-dark-700/60 overflow-hidden">
           <button
             onClick={() => setOpen(open === i ? null : i)}
             className="w-full flex items-center justify-between px-4 py-3.5 text-left gap-3 hover:bg-dark-50 dark:hover:bg-dark-700/30 transition-colors"
@@ -760,7 +760,7 @@ function OutrosListModal({ onClose, onSelect }: { onClose: () => void; onSelect:
               <button
                 key={s.title}
                 onClick={() => onSelect(s)}
-                className="group rounded-xl p-4 text-left bg-dark-50 dark:bg-dark-700/50 border border-dark-100 dark:border-dark-700 hover:border-primary-300 dark:hover:border-primary-700 hover:bg-white dark:hover:bg-dark-700 transition-all duration-200"
+                className="group rounded-xl p-4 text-left bg-dark-100 dark:bg-dark-700/50 border border-dark-200 dark:border-dark-700 hover:border-primary-300 dark:hover:border-primary-700 hover:bg-dark-50 dark:hover:bg-dark-700 transition-all duration-200"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${s.iconBg}`}>
@@ -866,8 +866,8 @@ export default function Services() {
               variants={cardVariants}
               onClick={() => setSelectedService(service)}
               className={`group relative rounded-2xl p-6 cursor-pointer overflow-hidden
-                          bg-white dark:bg-dark-800/50
-                          border border-dark-100 dark:border-dark-700/50
+                          bg-dark-100 dark:bg-dark-800/50
+                          border border-dark-200 dark:border-dark-700/50
                           hover:border-primary-300 dark:hover:border-primary-700
                           hover:shadow-xl hover:shadow-primary-500/5
                           transition-all duration-300
@@ -903,8 +903,8 @@ export default function Services() {
             variants={cardVariants}
             onClick={() => setOutrosOpen(true)}
             className="group relative rounded-2xl p-6 cursor-pointer overflow-hidden
-                        bg-white dark:bg-dark-800/50
-                        border border-dark-100 dark:border-dark-700/50
+                        bg-dark-100 dark:bg-dark-800/50
+                        border border-dark-200 dark:border-dark-700/50
                         hover:border-primary-300 dark:hover:border-primary-700
                         hover:shadow-xl hover:shadow-primary-500/5
                         transition-all duration-300

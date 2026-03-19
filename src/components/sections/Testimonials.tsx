@@ -111,8 +111,8 @@ export default function Testimonials() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className={`break-inside-avoid rounded-2xl p-6 bg-gradient-to-br ${t.color}
-                          bg-white dark:bg-dark-800/50
-                          border border-dark-100 dark:border-dark-700/50
+                          bg-dark-100 dark:bg-dark-800/50
+                          border border-dark-200 dark:border-dark-700/50
                           hover:shadow-xl hover:scale-[1.01] transition-all duration-300`}
             >
               {/* Quote icon */}
