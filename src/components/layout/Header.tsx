@@ -4,11 +4,12 @@ import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useTheme } from '@/hooks/useTheme'
 
 const navLinks = [
-  { label: 'Início',    href: '#inicio' },
-  { label: 'Serviços',  href: '#servicos' },
-  { label: 'Sobre',     href: '#sobre' },
-  { label: 'Portfólio', href: '#portfolio' },
-  { label: 'FAQ',       href: '#faq' },
+  { label: 'Início',       href: '#inicio' },
+  { label: 'Serviços',     href: '#servicos' },
+  { label: 'TerraControl', href: '#terracontrol' },
+  { label: 'Sobre',        href: '#sobre' },
+  { label: 'Portfólio',    href: '#portfolio' },
+  { label: 'FAQ',          href: '#faq' },
 ]
 
 export default function Header() {

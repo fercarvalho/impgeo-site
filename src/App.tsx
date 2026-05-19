@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Hero from '@/components/sections/Hero'
 import Services from '@/components/sections/Services'
+import TerraControl from '@/components/sections/TerraControl'
 import About from '@/components/sections/About'
 import Portfolio from '@/components/sections/Portfolio'
 import Testimonials from '@/components/sections/Testimonials'
@@ -28,6 +29,7 @@ export default function App() {
       <main>
         <Hero />
         <Services />
+        <TerraControl />
         <About />
         <Portfolio />
         <Testimonials />
