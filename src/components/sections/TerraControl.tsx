@@ -68,13 +68,18 @@ export default function TerraControl() {
             </span>
           </motion.div>
           <motion.h2
-            className="section-title mb-5 text-dark-900 dark:text-white"
+            className="section-title mb-5 text-dark-900 dark:text-white flex items-center justify-center flex-wrap gap-x-3 gap-y-1"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            Conheça o{' '}
+            <span>Conheça o</span>
+            <img
+              src="/logoterracontrol.png"
+              alt="TerraControl"
+              className="inline-block w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain drop-shadow-md align-middle"
+            />
             <span className="bg-gradient-to-r from-[#48A326] to-[#0041B1] dark:from-[#5cc933] dark:to-[#3b82f6] bg-clip-text text-transparent">
               TerraControl
             </span>
@@ -148,9 +153,11 @@ export default function TerraControl() {
 
                 <div className="bg-gradient-to-r from-[#3d8920] to-[#003391] px-5 py-3 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-md bg-white/15 flex items-center justify-center">
-                      <Layers size={15} className="text-white" />
-                    </div>
+                    <img
+                      src="/logoterracontrol.png"
+                      alt="TerraControl"
+                      className="w-9 h-9 object-contain"
+                    />
                     <div>
                       <p className="text-sm font-bold text-white leading-none">TerraControl</p>
                       <p className="text-[10px] text-blue-200 mt-0.5">Gestão territorial</p>
