@@ -67,6 +67,24 @@ export default function TerraControl() {
               Produto Exclusivo IMPGEO
             </span>
           </motion.div>
+          <div className="mb-6">
+            <motion.a
+              href="https://terracontrol.viverdepj.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.08 }}
+              className="inline-flex items-center justify-center gap-3 px-10 sm:px-16 py-3.5 rounded-xl text-lg font-semibold text-white shadow-lg shadow-[#0041B1]/30
+                         bg-gradient-to-r from-[#48A326] to-[#0041B1]
+                         hover:shadow-xl hover:shadow-[#0041B1]/50 hover:scale-105
+                         transition-all duration-300"
+            >
+              <img src="/logoterracontrol.png" alt="" className="w-7 h-7 object-contain" />
+              Acessar plataforma
+            </motion.a>
+          </div>
           <motion.h2
             className="section-title mb-5 text-dark-900 dark:text-white flex items-center justify-center flex-wrap gap-x-3 gap-y-1"
             initial={{ opacity: 0, y: 20 }}
@@ -122,12 +140,15 @@ export default function TerraControl() {
               href="https://wa.me/5543991862770?text=Ol%C3%A1%2C%20pessoal%20da%20IMPGEO%2C%20gostaria%20de%20conhecer%20o%20TerraControl%20e%20agendar%20uma%20demonstra%C3%A7%C3%A3o."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white shadow-lg shadow-[#0041B1]/30
-                         bg-gradient-to-r from-[#48A326] to-[#0041B1]
-                         hover:shadow-xl hover:shadow-[#0041B1]/50 hover:scale-105
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold
+                         border border-[#0041B1]/30 dark:border-white/15
+                         text-[#0041B1] dark:text-white
+                         bg-white/50 dark:bg-white/[0.03] backdrop-blur-sm
+                         hover:bg-white/80 dark:hover:bg-white/[0.08]
+                         hover:border-[#0041B1]/50 dark:hover:border-white/30
                          transition-all duration-300"
             >
-              Solicitar demonstração <ArrowRight size={18} />
+              Solicitar demonstração <ArrowRight size={16} />
             </a>
           </motion.div>
 

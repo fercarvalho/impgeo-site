@@ -100,11 +100,28 @@ export default function Header() {
 
         {/* Right side */}
         <motion.div
-          className="flex items-center gap-3"
+          className="flex items-center gap-2 sm:gap-3"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
+          {/* TerraControl button */}
+          <a
+            href="https://terracontrol.viverdepj.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Acessar o TerraControl"
+            className="inline-flex items-center gap-2 pl-2 pr-2 sm:pr-6 py-2.5 rounded-xl
+                       bg-gradient-to-r from-[#48A326] to-[#0041B1]
+                       text-white text-sm font-semibold
+                       shadow-lg shadow-[#0041B1]/25
+                       hover:shadow-[#0041B1]/40 hover:scale-105
+                       transition-all duration-300"
+          >
+            <img src="/logoterracontrol.png" alt="" className="w-5 h-5 object-contain" />
+            <span className="hidden sm:inline">TerraControl</span>
+          </a>
+
           {/* Theme toggle */}
           <button
             onClick={toggle}
